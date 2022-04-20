@@ -6,7 +6,7 @@ import classes from './ProductScreen.module.css'
         <div className={classes.ProductScreen}>
            <div className={classes.ProductScreenLeft}>
                <div className={classes.leftImage}>
-                   <img src="https://images.unsplash.com/photo-1574755393849-623942496936?ixid=MnwxMjA3f
+                   <img src="https://images.unsplash.com/photo-1574755393849-623942496 36?ixid=MnwxMjA3f
                    DB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1636&q=80' alt='product img'/>
                    " alt="product img"/>
                 </div>
