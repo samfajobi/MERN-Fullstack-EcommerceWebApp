@@ -1,18 +1,51 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: 'config.env' });
-
-const productRoutes = require('./route/productRoute');
-
 const express = require("express");
+const mongoose = require("mongoose");
+// const UserRoute = require("./routes/userRoute");
+// const authRoute = require("./routes/authRoute");
+// const hotelRoute = require('./routes/hotelRoute');
+// const userRoute = require('./routes/userRoute');
+// const roomRoute = require('./routes/roomRoute');
 
-const DBConnect = require("./config/db");
+
+const dotenv = require("dotenv");
+const cors = require('cors')
 const app = express();
 
+
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
+ 
+ app.use(cors(corsOptions)) // Use this after the variable declaration  
+
+ 
 app.use(express.json());
-app.use('./api/products', productRoutes );
 
-DBConnect();
+dotenv.config();
 
-const PORT = 5000 || process.env.PORT ;
+// app.use("/api/users", UserRoute);
+// app.use("/api/auth", authRoute);
+// app.use('/api/hotel', hotelRoute);
+// app.use('/api/user', userRoute);
+// app.use('/api/room', roomRoute);
 
-app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
+
+
+mongoose.connect(process.env.DATABASE_URL)
+.then(() => console.log("Database Connection Successfull")) 
+.catch((err) => console.log("Database Connection UnSuccessful!!!", err));  
+ 
+
+app.get("/", (req, res) => 
+    res.send("You are Welcome Back")
+);  
+ 
+//app.use("/user", UserRoute);
+ 
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`App is running on PORT ${PORT}`)
+});

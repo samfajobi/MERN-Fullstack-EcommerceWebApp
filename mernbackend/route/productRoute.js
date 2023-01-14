@@ -10,4 +10,5 @@ router.get('/', getAllProducts );
 // get a product by id from the DB
 router.get('/:id', getProductById);
 
+
 module.exports = router;
